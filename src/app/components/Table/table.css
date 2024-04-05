@@ -1,0 +1,15 @@
+table {
+  border: 1px solid var(--text-color);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 4px;
+  border-bottom: 1px solid var(--text-color);
+  border-right: 1px solid var(--text-color);
+}
+
+tr {
+}
