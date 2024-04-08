@@ -11,5 +11,16 @@ th {
   border-right: 1px solid var(--text-color);
 }
 
-tr {
+th>div {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  min-width: 150px;
+}
+
+th>div>button {
+  width: 20px;
+  height: 20px;
+  font-size: 25px;
+  font-weight: 700;
 }
