@@ -1,7 +1,7 @@
 import mongoose, { PipelineStage } from "mongoose";
 import connectToDB from "./connectToDB";
 import { saleSchema } from "./models/sales";
-import { SearchParams, StatisticsResponse } from "../types";
+import { SearchParams, TableDataResponse } from "../types";
 import { TestData } from "../components/Table/types";
 
 const testData = [{
@@ -215,7 +215,7 @@ const testData = [{
     subject: 'Куртки'
 },]
 
-export default async function getStatistics(searchParams: SearchParams): Promise<StatisticsResponse | undefined> {
+export default async function getStatistics(searchParams: SearchParams): Promise<TableDataResponse<TestData> | undefined> {
     console.log(searchParams)
     const { sort, dateRange, currentPage, size } = searchParams;
     if (dateRange) { }

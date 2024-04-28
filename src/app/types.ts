@@ -1,5 +1,3 @@
-import { TestData } from "./components/Table/types";
-
 export type SearchEnum = "sort" | "dateRange" | "currentPage" | 'size';
 export interface Params { slug: string };
 export type SearchParams = {
@@ -11,4 +9,4 @@ export interface PageParams {
     searchParams: SearchParams
 }
 
-export interface StatisticsResponse { items: TestData[], size: number, currentPage: number }
+export interface TableDataResponse<T> { items: T[], size: number, currentPage: number }

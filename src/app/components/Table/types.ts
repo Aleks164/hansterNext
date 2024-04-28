@@ -1,3 +1,7 @@
+export interface TableRowData {
+  _id: string;[index: string]: any;
+}
+
 export interface TestData {
   _id: string;
   supplierArticle: string;
@@ -19,4 +23,4 @@ export interface Column {
 
 export type Keys = keyof TestData;
 
-export type SortDirection = "asc"|"desc"|"none";
+export type SortDirection = "asc" | "desc" | "none";
