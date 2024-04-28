@@ -8,18 +8,17 @@ import { ReadonlyURLSearchParams } from "next/navigation";
 import styles from "./styles.module.css";
 
 interface Props {
-  searchParams: ReadonlyURLSearchParams;
-  setSearchParams: (key: string, value: string) => void;
+  dateRange: string | undefined;
+  onSetDateRange: (pickerDateRange: string[]) => void;
 }
 
 type ParamsDateRange = [string | undefined, string | undefined];
 
-function RangePicker({ searchParams, setSearchParams }: Props) {
+function RangePicker({ dateRange, onSetDateRange }: Props) {
   const [pickerDateRange, setPickerDateRange] = useState<ParamsDateRange>([
     undefined,
     undefined,
   ]);
-  const userDateRange = searchParams.get("dateRange") || undefined;
 
   const onDateChange = (date: string, type: DateType) => {
     if (type === "startDate") setPickerDateRange((prev) => [date, prev[1]]);
@@ -27,14 +26,15 @@ function RangePicker({ searchParams, setSearchParams }: Props) {
   };
 
   useEffect(() => {
-    if (!pickerDateRange.length && userDateRange) {
-      const [startDate, endDate] = userDateRange.split("--");
+    if (!pickerDateRange.length && dateRange) {
+      const [startDate, endDate] = dateRange.split("--");
       if (startDate && endDate) setPickerDateRange([startDate, endDate]);
     }
-  }, [userDateRange]);
+  }, [dateRange]);
 
-  const onSetDateRange = () => {
-    setSearchParams("dateRange", pickerDateRange.join("--"));
+  const onSubmitDateRange = () => {
+    if (pickerDateRange[0] && pickerDateRange[1])
+      onSetDateRange(pickerDateRange);
   };
 
   return (
@@ -58,7 +58,7 @@ function RangePicker({ searchParams, setSearchParams }: Props) {
       <button
         className={styles.date_range_button}
         disabled={!pickerDateRange[0] || !pickerDateRange[1]}
-        onClick={onSetDateRange}
+        onClick={onSubmitDateRange}
       >
         OK
       </button>

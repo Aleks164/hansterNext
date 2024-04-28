@@ -13,16 +13,15 @@ interface Props {
 
 function ControlPanel({ searchParams, maxPage }: Props) {
   const { setSearchParams } = useCustomSearchParams();
-  const [paginationParams, setPaginationParams] = useState({
-    maxPage: 1,
-    currentPage: 1,
-    currentListSize: 1,
-  });
+
+  const onSetDateRange = (pickerDateRange: [string, string]) => {
+    setSearchParams("dateRange", pickerDateRange.join("--"));
+  };
 
   return (
     <div>
       <RangePicker
-        searchParams={searchParams}
+        onSetDateRange={onSetDateRange}
         setSearchParams={setSearchParams}
       />
       <Pagination

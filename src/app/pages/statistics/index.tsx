@@ -12,12 +12,13 @@ interface Props {
 
 async function Statistics({ searchParams }: Props) {
   const statistics = await getStatistics(searchParams);
+  const maxPaginationPage =
+    statistics && searchParams.size && +searchParams.size
+      ? Math.ceil(statistics.items.length / +searchParams.size)
+      : 1;
   return (
     <>
-      <ControlPanel
-        searchParams={searchParams}
-        maxPage={Math.ceil(statistics?.items.length / searchParams.size)}
-      />
+      <ControlPanel searchParams={searchParams} maxPage={maxPaginationPage} />
       <Table
         columns={statColumns}
         tableData={statistics}
