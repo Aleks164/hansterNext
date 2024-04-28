@@ -1,6 +1,8 @@
 import mongoose, { PipelineStage } from "mongoose";
 import connectToDB from "./connectToDB";
 import { saleSchema } from "./models/sales";
+import { SearchParams, StatisticsResponse } from "../types";
+import { TestData } from "../components/Table/types";
 
 const testData = [{
     _id: ('65ee7e3d4bd208a91cc26200'),
@@ -213,7 +215,10 @@ const testData = [{
     subject: 'Куртки'
 },]
 
-export default async function getStatistics() {
+export default async function getStatistics(searchParams: SearchParams): Promise<StatisticsResponse | undefined> {
+    console.log(searchParams)
+    const { sort, dateRange, currentPage, size } = searchParams;
+    if (dateRange) { }
     // const Sales = mongoose.models.SupplierSales || mongoose.model('SupplierSales', saleSchema);
     try {
         // const connect = await connectToDB(); 
@@ -222,8 +227,8 @@ export default async function getStatistics() {
         // const sales = await Sales.aggregate(getSaleDataByDateRange(fromDate, toDate)).exec();
         const sales = await new Promise((resolve, reject) => {
             setTimeout(() => resolve(testData), 300)
-        });
-        return sales
+        }) as TestData[];
+        return { items: sales, size: sales.length || 1, currentPage: currentPage ? +currentPage : 1 }
     } catch (e) {
         console.log(e);
     }

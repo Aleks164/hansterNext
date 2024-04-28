@@ -12,9 +12,9 @@ function useCustomSearchParams() {
     (key: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
 
-      params.set(key, value);
+      if (value === "") params.delete(key);
+      else params.set(key, value);
 
-      console.log(params.toString());
       router.push(pathname + "?" + params.toString());
     },
     [searchParams, router, pathname]

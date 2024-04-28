@@ -1,0 +1,14 @@
+.date_range_button {
+  height: 20px;
+  width: 35px;
+  cursor: pointer;
+}
+
+.range_container {
+  display: flex;
+}
+
+.range_container > *,
+.range_container input {
+  margin-left: 10px;
+}

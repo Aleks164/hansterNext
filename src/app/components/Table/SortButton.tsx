@@ -1,36 +1,52 @@
 "use client";
 
+import styles from "./styles.module.css";
+import "./styles.module.css";
 import { SortDirection } from "./types";
 
 interface Props {
-  direction: string | null;
-  sortKey: string;
+  sortParams: string | null;
+  columnKey: string;
   children?: React.ReactNode;
-  onChange: (key: string, currentDirection: SortDirection) => void;
+  onChange: (key: string, currentDirection: string) => void;
 }
 
-function getNextDirection(currentDirection: SortDirection) {
+function getNextDirectionKey(
+  currentDirection: SortDirection,
+  columnKey: string
+): string {
   switch (currentDirection) {
     case "asc":
-      return "none";
+      return "";
     case "desc":
-      return "asc";
+      return `asc,${columnKey}`;
     default:
-      return "desc";
+      return `desc,${columnKey}`;
   }
 }
+function SortButton({ sortParams, children, columnKey, onChange }: Props) {
+  const [direction, sortColumKey] = sortParams?.split(",") || [];
 
-export function SortButton({ direction, children, sortKey, onChange }: Props) {
   const currentDirection =
-    direction === "asc" || direction === "desc" ? direction : "none";
+    columnKey === sortColumKey && (direction === "asc" || direction === "desc")
+      ? direction
+      : "none";
   const currentIcon =
-    direction === "asc" ? "v" : direction === "desc" ? "^" : "-";
+    currentDirection === "asc" ? "↓" : currentDirection === "desc" ? "↑" : "↕";
+
   return (
     <button
-      onClick={() => onChange(sortKey, getNextDirection(currentDirection))}
+      className={currentDirection === "none" ? undefined : styles.active_box}
+      onClick={() =>
+        onChange("sort", getNextDirectionKey(currentDirection, columnKey))
+      }
     >
       {children}
-      <span>{currentIcon}</span>
+      <span className={currentDirection === "none" ? undefined : "active"}>
+        {currentIcon}
+      </span>
     </button>
   );
 }
+
+export default SortButton;

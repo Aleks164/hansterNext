@@ -2,7 +2,7 @@
 
 import useCustomSearchParams from "@/app/share/hooks/useCustomSearchParams";
 import { Column } from "./types";
-import { SortButton } from "./SortButton";
+import SortButton from "./SortButton";
 
 interface Props {
   columns: Column[];
@@ -17,10 +17,10 @@ function TableHeader({ columns }: Props) {
         {columns.map((column) => (
           <th key={column.key}>
             <div>
-              {column.title}
+              <span className="headerTitle">{column.title}</span>
               <SortButton
-                sortKey={column.key}
-                direction={searchParams.get(column.key)}
+                columnKey={column.key}
+                sortParams={searchParams.get("sort")}
                 onChange={setSearchParams}
               />
             </div>

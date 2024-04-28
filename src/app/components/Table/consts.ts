@@ -1,0 +1,1 @@
+export const LIST_SIZES = [10, 20, 50];
