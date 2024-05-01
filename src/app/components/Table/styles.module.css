@@ -4,11 +4,6 @@
   scrollbar-color: var(--track-color) var(--text-color);
 }
 
-:root {
-  --thumb-color: rgb(162, 162, 162);
-  --track-color: rgb(93, 93, 93);
-}
-
 .table-wrapper ::-webkit-scrollbar {
   height: 10px;
   width: 10px;
@@ -36,21 +31,21 @@
   margin-top: 20px;
 }
 
-table {
+.table-wrapper table {
   border: 1px solid var(--text-color);
   border-collapse: separate;
   border-spacing: 0;
   width: 100%;
 }
 
-td,
-th {
+.table-wrapper td,
+.table-wrapper th {
   padding: 4px;
   border-bottom: 1px solid var(--text-color);
   border-right: 1px solid var(--text-color);
 }
 
-th > div {
+.table-wrapper th > div {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -58,7 +53,7 @@ th > div {
   align-items: center;
 }
 
-th > div > button {
+.table-wrapper th > div > button {
   border-radius: 10px;
   width: 20px;
   height: 20px;
@@ -68,7 +63,7 @@ th > div > button {
   cursor: pointer;
 }
 
-th > div > button > span {
+.table-wrapper th > div > button > span {
   height: 20px;
   font-size: 20px;
   font-weight: 700;
@@ -79,13 +74,13 @@ th > div > button > span {
   user-select: none;
 }
 
-.active,
-button:hover > span {
+.active_row,
+.sort_button:hover > span {
   color: var(--active-color);
 }
 
 .active_box,
-button:hover {
+.sort_buttons:hover {
   box-shadow: 0px 0px 2px 1px var(--active-color);
 }
 

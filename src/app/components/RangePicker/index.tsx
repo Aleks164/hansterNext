@@ -3,13 +3,13 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from "./DatePicker";
 import { DateType } from "./types";
-import useCustomSearchParams from "@/app/share/hooks/useCustomSearchParams";
-import { ReadonlyURLSearchParams } from "next/navigation";
 import styles from "./styles.module.css";
+
+type DateRange = [string, string];
 
 interface Props {
   dateRange: string | undefined;
-  onSetDateRange: (pickerDateRange: string[]) => void;
+  onSetDateRange: (pickerDateRange: DateRange) => void;
 }
 
 type ParamsDateRange = [string | undefined, string | undefined];
@@ -34,7 +34,7 @@ function RangePicker({ dateRange, onSetDateRange }: Props) {
 
   const onSubmitDateRange = () => {
     if (pickerDateRange[0] && pickerDateRange[1])
-      onSetDateRange(pickerDateRange);
+      onSetDateRange(pickerDateRange as DateRange);
   };
 
   return (

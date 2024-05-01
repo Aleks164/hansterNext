@@ -17,18 +17,27 @@ export function Pagination({
   currentListSize,
   onChange,
 }: Props) {
+  const onChangePaginationSize = (newSize: string) => {
+    if (newSize) onChange("size", newSize);
+  };
   return (
     <div>
       <button disabled={currentPage <= 1} onClick={() => {}}>
-        <span>U+27A4</span>
+        <span>{"<"}</span>
       </button>
       <span>{currentPage}</span>
       <button disabled={currentPage >= maxPage} onClick={() => {}}>
-        <span>U+27A4</span>
+        <span>{">"}</span>
       </button>
-      <select name="page" value={currentListSize}>
+      <select
+        name="page"
+        value={currentListSize}
+        onChange={(e) => onChangePaginationSize(e.target.value)}
+      >
         {LIST_SIZES.map((size) => (
-          <option value={size}>{size}</option>
+          <option key={size} value={size}>
+            {size}
+          </option>
         ))}
       </select>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import useCustomSearchParams from "@/app/share/hooks/useCustomSearchParams";
 import RangePicker from "../../../components/RangePicker";
 import { Pagination } from "../../../components/Table/Pagination";
@@ -22,12 +22,12 @@ function ControlPanel({ searchParams, maxPage }: Props) {
     <div>
       <RangePicker
         onSetDateRange={onSetDateRange}
-        setSearchParams={setSearchParams}
+        dateRange={searchParams.currentPage}
       />
       <Pagination
         maxPage={maxPage || 1}
-        currentPage={searchParams.currentPage || 1}
-        currentListSize={searchParams.currentPage || 1}
+        currentPage={searchParams.currentPage ? +searchParams.currentPage : 1}
+        currentListSize={searchParams.size ? +searchParams.size : 1}
         onChange={setSearchParams}
       />
     </div>
