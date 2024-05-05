@@ -1,0 +1,8 @@
+.control_panel_wrapper {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  justify-content: space-around;
+  border: 1px solid;
+  border-radius: 10px;
+}

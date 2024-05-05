@@ -2,9 +2,10 @@
 
 import React from "react";
 import useCustomSearchParams from "@/app/share/hooks/useCustomSearchParams";
-import RangePicker from "../../../components/RangePicker";
-import { Pagination } from "../../../components/Table/Pagination";
+import Pagination from "@/app/components/Table/Pagination";
+import RangePicker from "@/app/components/RangePicker";
 import { SearchParams } from "@/app/types";
+import styles from "./styles.module.css";
 
 interface Props {
   searchParams: SearchParams;
@@ -19,7 +20,7 @@ function ControlPanel({ searchParams, maxPage }: Props) {
   };
 
   return (
-    <div>
+    <div className={styles.control_panel_wrapper}>
       <RangePicker
         onSetDateRange={onSetDateRange}
         dateRange={searchParams.currentPage}

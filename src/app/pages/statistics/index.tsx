@@ -1,6 +1,6 @@
 import React from "react";
 import ControlPanel from "@/app/pages/statistics/ControlPanel";
-import Table from "@/app/components/Table/Table";
+import Table from "@/app/components/Table";
 import TableHeader from "@/app/components/Table/TableHeader";
 import statColumns from "@/app/const/statColumns";
 import getStatistics from "@/app/lib/getStatistics";

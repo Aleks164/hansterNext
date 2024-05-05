@@ -1,10 +1,10 @@
 "use server";
 
 import React from "react";
-import getStatistics from "../../lib/getStatistics";
-import { Column, TableRowData, TestData } from "./types";
+
+import { Column, TableRowData } from "./types";
 import { SearchParams, TableDataResponse } from "@/app/types";
-import "./styles.module.css";
+import styles from "./styles.module.css";
 
 interface Props {
   columns: Column[];
@@ -15,8 +15,8 @@ interface Props {
 
 async function Table({ columns, children, searchParams, tableData }: Props) {
   return (
-    <div className="table-wrapper">
-      <div className="table-scroll">
+    <div className={styles.table_wrapper}>
+      <div className={styles.table_scroll_container}>
         <table>
           {children}
           <tbody>

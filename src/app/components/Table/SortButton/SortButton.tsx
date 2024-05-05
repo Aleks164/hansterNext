@@ -1,8 +1,7 @@
 "use client";
 
+import { SortDirection } from "../types";
 import styles from "./styles.module.css";
-import "./styles.module.css";
-import { SortDirection } from "./types";
 
 interface Props {
   sortParams: string | null;
@@ -36,13 +35,18 @@ function SortButton({ sortParams, children, columnKey, onChange }: Props) {
 
   return (
     <button
-      className={currentDirection === "none" ? undefined : styles.active_box}
+      className={
+        styles.sort_button +
+        (currentDirection === "none" ? "" : " " + styles.active_box)
+      }
       onClick={() =>
         onChange("sort", getNextDirectionKey(currentDirection, columnKey))
       }
     >
       {children}
-      <span className={currentDirection === "none" ? undefined : "active"}>
+      <span
+        className={currentDirection === "none" ? undefined : styles.active_row}
+      >
         {currentIcon}
       </span>
     </button>

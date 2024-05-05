@@ -1,89 +1,52 @@
-.table-wrapper {
-  position: relative;
+.table_wrapper {
   scrollbar-width: thin;
-  scrollbar-color: var(--track-color) var(--text-color);
 }
 
-.table-wrapper ::-webkit-scrollbar {
+.table_wrapper ::-webkit-scrollbar {
   height: 10px;
   width: 10px;
 }
 
-.table-wrapper ::-webkit-scrollbar-track {
+.table_wrapper ::-webkit-scrollbar-track {
   background: var(--text-color);
   border-radius: 15px;
 }
 
-.table-wrapper ::-webkit-scrollbar-thumb {
+.table_wrapper ::-webkit-scrollbar-thumb {
   background-color: var(--track-color);
   border: 3px solid var(--text-color);
   border-radius: 15px;
 }
 
-.table-wrapper ::-webkit-scrollbar-corner {
+.table_wrapper ::-webkit-scrollbar-corner {
   background-color: transparent;
 }
 
-.table-scroll {
+.table_scroll_container {
   height: 85vh;
   width: 95vw;
   overflow: auto;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
-.table-wrapper table {
+.table_wrapper table {
   border: 1px solid var(--text-color);
   border-collapse: separate;
   border-spacing: 0;
   width: 100%;
 }
 
-.table-wrapper td,
-.table-wrapper th {
+.table_wrapper td,
+.table_wrapper th {
   padding: 4px;
   border-bottom: 1px solid var(--text-color);
   border-right: 1px solid var(--text-color);
 }
 
-.table-wrapper th > div {
+.table_wrapper th > div {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   min-width: 150px;
   align-items: center;
-}
-
-.table-wrapper th > div > button {
-  border-radius: 10px;
-  width: 20px;
-  height: 20px;
-  background-color: #ffffff00;
-  box-shadow: 0px 0px 2px 1px var(--text-color);
-  position: relative;
-  cursor: pointer;
-}
-
-.table-wrapper th > div > button > span {
-  height: 20px;
-  font-size: 20px;
-  font-weight: 700;
-  position: absolute;
-  top: -5px;
-  right: 3px;
-  color: var(--text-color);
-  user-select: none;
-}
-
-.active_row,
-.sort_button:hover > span {
-  color: var(--active-color);
-}
-
-.active_box,
-.sort_buttons:hover {
-  box-shadow: 0px 0px 2px 1px var(--active-color);
-}
-
-.headerTitle {
-  width: 85%;
 }

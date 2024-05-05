@@ -6,6 +6,7 @@
 
 .range_container {
   display: flex;
+  flex: 1;
 }
 
 .range_container > *,

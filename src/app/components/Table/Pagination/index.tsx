@@ -1,8 +1,7 @@
 "use client";
 
-import { LIST_SIZES } from "./consts";
+import { LIST_SIZES } from "../consts";
 import styles from "./styles.module.css";
-import "./styles.module.css";
 
 interface Props {
   maxPage: number;
@@ -11,7 +10,7 @@ interface Props {
   onChange: (key: string, currentDirection: string) => void;
 }
 
-export function Pagination({
+function Pagination({
   maxPage,
   currentPage,
   currentListSize,
@@ -21,7 +20,7 @@ export function Pagination({
     if (newSize) onChange("size", newSize);
   };
   return (
-    <div>
+    <div className={styles.pagination_container}>
       <button disabled={currentPage <= 1} onClick={() => {}}>
         <span>{"<"}</span>
       </button>
@@ -43,3 +42,5 @@ export function Pagination({
     </div>
   );
 }
+
+export default Pagination;

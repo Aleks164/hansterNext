@@ -1,9 +1,9 @@
 "use client";
 
 import useCustomSearchParams from "@/app/share/hooks/useCustomSearchParams";
-import { Column } from "./types";
-import SortButton from "./SortButton/SortButton";
+import SortButton from "../SortButton/SortButton";
 import styles from "./styles.module.css";
+import { Column } from "../types";
 
 interface Props {
   columns: Column[];
