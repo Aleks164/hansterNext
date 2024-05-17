@@ -1,10 +1,11 @@
 import React from "react";
 import ControlPanel from "@/app/pages/statistics/ControlPanel";
-import Table from "@/app/components/Table";
-import TableHeader from "@/app/components/Table/TableHeader";
-import statColumns from "@/app/const/statColumns";
-import getStatistics from "@/app/lib/getStatistics";
+
+import getStatistics from "@/shared/lib/getStatistics";
+import statColumns from "@/shared/const/statColumns";
+import Table from "@/shared/ui/Table";
 import { SearchParams } from "@/app/types";
+import TableHeader from "@/shared/ui/Table/TableHeader";
 
 interface Props {
   searchParams: SearchParams;
@@ -19,12 +20,8 @@ async function Statistics({ searchParams }: Props) {
   return (
     <>
       <ControlPanel searchParams={searchParams} maxPage={maxPaginationPage} />
-      <Table
-        columns={statColumns}
-        tableData={statistics}
-        searchParams={searchParams}
-      >
-        <TableHeader columns={statColumns} />
+      <Table columns={statColumns} tableData={statistics}>
+        <TableHeader searchParams={searchParams} columns={statColumns} />
       </Table>
     </>
   );

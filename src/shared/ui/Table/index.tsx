@@ -1,5 +1,3 @@
-"use server";
-
 import React from "react";
 
 import { Column, TableRowData } from "./types";
@@ -9,11 +7,10 @@ import styles from "./styles.module.css";
 interface Props {
   columns: Column[];
   children?: React.ReactNode;
-  searchParams: SearchParams;
   tableData: TableDataResponse<TableRowData> | undefined;
 }
 
-async function Table({ columns, children, searchParams, tableData }: Props) {
+async function Table({ columns, children, tableData }: Props) {
   return (
     <div className={styles.table_wrapper}>
       <div className={styles.table_scroll_container}>

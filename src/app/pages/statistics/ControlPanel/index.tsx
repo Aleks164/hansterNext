@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import useCustomSearchParams from "@/app/share/hooks/useCustomSearchParams";
-import Pagination from "@/app/components/Table/Pagination";
-import RangePicker from "@/app/components/RangePicker";
+import RangePicker from "@/shared/ui/RangePicker";
+import Pagination from "@/shared/ui/Table/Pagination";
+import useCustomSearchParams from "@/shared/hooks/useCustomSearchParams";
 import { SearchParams } from "@/app/types";
 import styles from "./styles.module.css";
 

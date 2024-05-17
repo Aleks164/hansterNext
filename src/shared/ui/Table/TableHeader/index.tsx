@@ -1,17 +1,14 @@
-"use client";
-
-import useCustomSearchParams from "@/app/share/hooks/useCustomSearchParams";
-import { Column } from "./types";
-import SortButton from "./SortButton/SortButton";
+import SortButton from "../SortButton";
 import styles from "./styles.module.css";
+import { Column } from "../types";
+import { SearchParams } from "@/app/types";
 
 interface Props {
   columns: Column[];
+  searchParams: SearchParams;
 }
 
-function TableHeader({ columns }: Props) {
-  const { searchParams, setSearchParams } = useCustomSearchParams();
-
+function TableHeader({ columns, searchParams }: Props) {
   return (
     <thead>
       <tr>
@@ -21,8 +18,7 @@ function TableHeader({ columns }: Props) {
               <span className={styles.header_title}>{column.title}</span>
               <SortButton
                 columnKey={column.key}
-                sortParams={searchParams.get("sort")}
-                onChange={setSearchParams}
+                sortParams={searchParams.sort}
               />
             </div>
           </th>

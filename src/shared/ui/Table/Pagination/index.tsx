@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { LIST_SIZES } from "../consts";
 import styles from "./styles.module.css";
 
@@ -21,13 +22,25 @@ function Pagination({
   };
   return (
     <div className={styles.pagination_container}>
-      <button disabled={currentPage <= 1} onClick={() => {}}>
-        <span>{"<"}</span>
-      </button>
+      <Link
+        href={{
+          query: { page: currentPage - 1 },
+        }}
+      >
+        <button disabled={currentPage <= 1}>
+          <span>{"<"}</span>
+        </button>
+      </Link>
       <span>{currentPage}</span>
-      <button disabled={currentPage >= maxPage} onClick={() => {}}>
-        <span>{">"}</span>
-      </button>
+      <Link
+        href={{
+          query: { page: currentPage + 1 },
+        }}
+      >
+        <button disabled={currentPage >= maxPage}>
+          <span>{">"}</span>
+        </button>
+      </Link>
       <select
         name="page"
         value={currentListSize}

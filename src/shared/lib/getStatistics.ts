@@ -1,8 +1,8 @@
 import mongoose, { PipelineStage } from "mongoose";
 import connectToDB from "./connectToDB";
 import { saleSchema } from "./models/sales";
-import { SearchParams, TableDataResponse } from "../types";
-import { TestData } from "../components/Table/types";
+import { SearchParams, TableDataResponse } from "@/app/types";
+import { TestData } from "../ui/Table/types";
 
 const testData = [{
     _id: ('65ee7e3d4bd208a91cc26200'),
