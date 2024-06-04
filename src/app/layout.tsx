@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
 import "./globals.css";
+import ThemToggleButton from "@/entity/ThemToggleButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div>
+        <div className={styles.header_container}>
           <nav className={styles.crumbs}>
             <ol>
               <li className={styles.crumb}>
@@ -29,7 +30,8 @@ export default function RootLayout({
                 <Link href="/cards">Номенклатура</Link>
               </li>
             </ol>
-          </nav>{" "}
+          </nav>
+          <ThemToggleButton />
         </div>
         {children}
       </body>

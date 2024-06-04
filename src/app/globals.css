@@ -8,6 +8,8 @@
   --text-color: white;
   --active-color: #8899ff;
   --track-color: grey;
+  --light: #d8dbe0;
+  --dark: #28292c;
 }
 
 * {

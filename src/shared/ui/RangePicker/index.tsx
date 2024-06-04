@@ -4,17 +4,23 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "./DatePicker";
 import { DateType } from "./types";
 import styles from "./styles.module.css";
+import useCustomSearchParams from "@/shared/hooks/useCustomSearchParams";
 
 type DateRange = [string, string];
 
 interface Props {
   dateRange: string | undefined;
-  onSetDateRange: (pickerDateRange: DateRange) => void;
 }
 
 type ParamsDateRange = [string | undefined, string | undefined];
 
-function RangePicker({ dateRange, onSetDateRange }: Props) {
+function RangePicker({ dateRange }: Props) {
+  const { setSearchParams } = useCustomSearchParams();
+
+  const onSetDateRange = (pickerDateRange: [string, string]) => {
+    setSearchParams("dateRange", pickerDateRange.join("--"));
+  };
+
   const [pickerDateRange, setPickerDateRange] = useState<ParamsDateRange>([
     undefined,
     undefined,
