@@ -5,7 +5,7 @@ import statColumns from "@/shared/const/statColumns";
 import Table from "@/shared/ui/Table";
 import { SearchParams } from "@/app/types";
 import TableHeader from "@/shared/ui/Table/TableHeader";
-import ControlPanel from "@/entity/ControlPanel";
+import ControlPanel from "@/entities/ControlPanel";
 
 interface Props {
   searchParams: SearchParams;

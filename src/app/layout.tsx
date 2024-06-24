@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
 import "./globals.css";
-import ThemToggleButton from "@/entity/ThemToggleButton";
+import ThemToggleButton from "@/entities/ThemToggleButton";
 
 const inter = Inter({ subsets: ["latin"] });
 

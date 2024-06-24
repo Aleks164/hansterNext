@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DatePicker from "./DatePicker";
 import { DateType } from "./types";
 import styles from "./styles.module.css";
@@ -17,14 +17,15 @@ type ParamsDateRange = [string | undefined, string | undefined];
 function RangePicker({ dateRange }: Props) {
   const { setSearchParams } = useCustomSearchParams();
 
-  const onSetDateRange = (pickerDateRange: [string, string]) => {
-    setSearchParams("dateRange", pickerDateRange.join("--"));
-  };
-
+  // const currentRangeInParams = useRef<{startDate:string, endDate:string}>()
   const [pickerDateRange, setPickerDateRange] = useState<ParamsDateRange>([
     undefined,
     undefined,
   ]);
+
+  const onSetDateRange = (pickerDateRange: [string, string]) => {
+    setSearchParams("dateRange", pickerDateRange.join("--"));
+  };
 
   const onDateChange = (date: string, type: DateType) => {
     if (type === "startDate") setPickerDateRange((prev) => [date, prev[1]]);
@@ -34,14 +35,18 @@ function RangePicker({ dateRange }: Props) {
   useEffect(() => {
     if (!pickerDateRange.length && dateRange) {
       const [startDate, endDate] = dateRange.split("--");
-      if (startDate && endDate) setPickerDateRange([startDate, endDate]);
+      if (startDate && endDate) {
+        setPickerDateRange([startDate, endDate]);
+      }
     }
-  }, [dateRange]);
+  }, [dateRange, pickerDateRange.length]);
 
   const onSubmitDateRange = () => {
     if (pickerDateRange[0] && pickerDateRange[1])
       onSetDateRange(pickerDateRange as DateRange);
   };
+
+  // const isOkEnabled= pickerDateRange[0] && pickerDateRange[1] && ;
 
   return (
     <div className={styles.range_container}>
