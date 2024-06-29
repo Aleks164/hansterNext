@@ -1,4 +1,4 @@
-import { Column } from "../components/Table/types";
+import { Column } from "../ui/Table/types";
 
 const statColumns: Column[] = [
   {

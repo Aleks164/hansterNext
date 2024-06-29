@@ -11,11 +11,9 @@ interface Props {
 function ChangeSizeSelector({ currentListSize }: Props) {
   const { setSearchParams } = useCustomSearchParams();
   const onChangeSize = (size: string) => {
-    console.log(size);
     setSearchParams("size", size);
     setSearchParams("currentPage", "1");
   };
-  console.log(currentListSize);
   return (
     <select
       name="pageSize"

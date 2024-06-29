@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import DatePicker from "./DatePicker";
 import { DateType } from "./types";
 import styles from "./styles.module.css";
@@ -17,11 +17,19 @@ type ParamsDateRange = [string | undefined, string | undefined];
 function RangePicker({ dateRange }: Props) {
   const { setSearchParams } = useCustomSearchParams();
 
-  // const currentRangeInParams = useRef<{startDate:string, endDate:string}>()
   const [pickerDateRange, setPickerDateRange] = useState<ParamsDateRange>([
     undefined,
     undefined,
   ]);
+
+  const savedRange = useMemo(() => {
+    let newRange: { startDate: string; endDate: string } | null = null;
+    if (dateRange) {
+      const [startDate, endDate] = dateRange.split("--");
+      newRange = { startDate, endDate };
+    }
+    return newRange;
+  }, [dateRange]);
 
   const onSetDateRange = (pickerDateRange: [string, string]) => {
     setSearchParams("dateRange", pickerDateRange.join("--"));
@@ -33,20 +41,29 @@ function RangePicker({ dateRange }: Props) {
   };
 
   useEffect(() => {
-    if (!pickerDateRange.length && dateRange) {
-      const [startDate, endDate] = dateRange.split("--");
+    if (pickerDateRange.every((date) => !date) && savedRange) {
+      const { startDate, endDate } = savedRange;
       if (startDate && endDate) {
         setPickerDateRange([startDate, endDate]);
       }
     }
-  }, [dateRange, pickerDateRange.length]);
+  }, [savedRange, pickerDateRange]);
 
   const onSubmitDateRange = () => {
     if (pickerDateRange[0] && pickerDateRange[1])
       onSetDateRange(pickerDateRange as DateRange);
   };
 
-  // const isOkEnabled= pickerDateRange[0] && pickerDateRange[1] && ;
+  const isOkEnabled = useMemo(() => {
+    return (
+      !!pickerDateRange[0] &&
+      !!pickerDateRange[1] &&
+      (!savedRange ||
+        (savedRange &&
+          (pickerDateRange[0] !== savedRange.startDate ||
+            pickerDateRange[1] !== savedRange.endDate)))
+    );
+  }, [pickerDateRange, savedRange]);
 
   return (
     <div className={styles.range_container}>
@@ -68,7 +85,7 @@ function RangePicker({ dateRange }: Props) {
       </label>
       <button
         className={styles.date_range_button}
-        disabled={!pickerDateRange[0] || !pickerDateRange[1]}
+        disabled={!isOkEnabled}
         onClick={onSubmitDateRange}
       >
         OK
