@@ -19,6 +19,7 @@ export interface Column {
   dataIndex: string;
   key: string;
   width?: number;
+  renderFunc?: (value:string|number,record:any)=>React.ReactNode;
 }
 
 export type Keys = keyof TestData;

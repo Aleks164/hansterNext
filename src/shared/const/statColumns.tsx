@@ -1,4 +1,5 @@
 import { Column } from "../ui/Table/types";
+import ProductImage from "./FotoCell";
 
 const statColumns: Column[] = [
   {
@@ -30,6 +31,7 @@ const statColumns: Column[] = [
     dataIndex: "nmId",
     key: "photo",
     width: 50,
+    renderFunc: (id) => <ProductImage id={id as number} />,
   },
   {
     title: "Рейтинг",

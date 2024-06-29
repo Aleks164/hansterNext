@@ -19,8 +19,12 @@ async function Table({ columns, children, tableData }: Props) {
           <tbody>
             {tableData?.items.map((item) => (
               <tr key={item._id}>
-                {columns.map(({ dataIndex, key }) => (
-                  <td key={key}>{item[dataIndex]}</td>
+                {columns.map(({ dataIndex, key, renderFunc }) => (
+                  <td key={key}>
+                    {renderFunc
+                      ? renderFunc(item[dataIndex], item)
+                      : item[dataIndex]}
+                  </td>
                 ))}
               </tr>
             ))}
