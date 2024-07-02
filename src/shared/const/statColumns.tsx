@@ -1,5 +1,5 @@
 import { Column } from "../ui/Table/types";
-import ProductImage from "./FotoCell";
+import ProductImage from "../../entities/ProductImage";
 
 const statColumns: Column[] = [
   {

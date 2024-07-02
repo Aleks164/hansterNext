@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Column, TableRowData } from "./types";
-import { SearchParams, TableDataResponse } from "@/app/types";
+import { TableDataResponse } from "@/app/types";
 import styles from "./styles.module.css";
 
 interface Props {

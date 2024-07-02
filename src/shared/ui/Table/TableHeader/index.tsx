@@ -1,7 +1,7 @@
-import SortButton from "../SortButton";
-import styles from "./styles.module.css";
-import { Column } from "../types";
 import { SearchParams } from "@/app/types";
+import SortButton from "../SortButton";
+import { Column } from "../types";
+import styles from "./styles.module.css";
 
 interface Props {
   columns: Column[];
@@ -10,7 +10,7 @@ interface Props {
 
 function TableHeader({ columns, searchParams }: Props) {
   return (
-    <thead>
+    <thead className={styles.header_wrapper}>
       <tr>
         {columns.map((column) => (
           <th key={column.key}>

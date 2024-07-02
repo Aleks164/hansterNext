@@ -1,3 +1,10 @@
 .header_title {
   width: 85%;
 }
+
+.header_wrapper tr:nth-child(1) th {
+  background: var(--hover-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}

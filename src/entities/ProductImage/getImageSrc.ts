@@ -1,4 +1,4 @@
-import getHost from "./getImageHost";
+import getHost from "./getImageHost"; 
 
 export default function getImgSrc(id: number) {
     const vol = ~~(id / 1e5);
