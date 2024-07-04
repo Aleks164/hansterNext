@@ -10,7 +10,7 @@ interface Props {
   tableData: TableDataResponse<TableRowData> | undefined;
 }
 
-async function Table({ columns, children, tableData }: Props) {
+function Table({ columns, children, tableData }: Props) {
   return (
     <div className={styles.table_wrapper}>
       <div className={styles.table_scroll_container}>
