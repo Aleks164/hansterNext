@@ -31,7 +31,7 @@ const statColumns: Column[] = [
     dataIndex: "nmId",
     key: "photo",
     width: 50,
-    renderFunc: (id) => <ProductImage id={id as number} />,
+    // renderFunc: (id) => <ProductImage id={id as number} />,
   },
   {
     title: "Рейтинг",

@@ -1,6 +1,6 @@
 import React from "react";
 
-import getStatistics from "@/shared/lib/getStatistics";
+import getStatistics from "@/shared/lib/api/getStatistics";
 import statColumns from "@/shared/const/statColumns";
 import Table from "@/shared/ui/Table";
 import { SearchParams } from "@/app/types";

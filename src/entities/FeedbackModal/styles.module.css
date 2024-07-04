@@ -1,0 +1,25 @@
+.modal_container {
+  position: absolute;
+  margin: 0 auto;
+  max-height: 80vh;
+  width: 750px;
+  background-color: var(--background-color);
+  overflow: hidden;
+  z-index: 99;
+  border: 1px solid;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: -1px 1px 3px 1px;
+}
+
+.product_cart_container {
+  height: 100%;
+  width: 150px;
+  box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 15px;
+}
+
+.feedbacks_wrapper {
+  width: calc(100% - 150px);
+}

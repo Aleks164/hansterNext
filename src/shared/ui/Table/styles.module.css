@@ -3,19 +3,19 @@
 }
 
 .table_wrapper ::-webkit-scrollbar {
-  height: 10px;
-  width: 10px;
+  height: 15px;
+  width: 15px; 
 }
 
 .table_wrapper ::-webkit-scrollbar-track {
   background: var(--text-color);
-  border-radius: 15px;
+  border-radius: 15px; 
 }
 
 .table_wrapper ::-webkit-scrollbar-thumb {
   background-color: var(--track-color);
   border: 3px solid var(--text-color);
-  border-radius: 15px;
+  border-radius: 15px; 
 }
 
 .table_wrapper ::-webkit-scrollbar-corner {
