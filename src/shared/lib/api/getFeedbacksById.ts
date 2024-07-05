@@ -166,14 +166,14 @@ const testData = [
 export default async function getFeedbacksById(
   nmId: string
 ): Promise<Feedback[] | undefined> {
-  console.log(nmId);
-  await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+  console.log("start", nmId);
 
   try {
     const feedbacks: Feedback[] = await new Promise((resolve, reject) => {
-      setTimeout(() => resolve(testData), 300);
+      setTimeout(() => resolve(testData), 2000);
     });
 
+    console.log("end", nmId);
     return feedbacks;
   } catch (e) {
     console.log(e);

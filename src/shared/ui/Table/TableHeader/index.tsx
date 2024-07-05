@@ -17,8 +17,9 @@ function TableHeader({ columns, searchParams }: Props) {
             <div>
               <span className={styles.header_title}>{column.title}</span>
               <SortButton
-                columnKey={column.key}
-                sortParams={searchParams.sort}
+                sortKey={"statTableSort"}
+                sortFiledName={column.key}
+                sortParams={searchParams.statTableSort}
               />
             </div>
           </th>

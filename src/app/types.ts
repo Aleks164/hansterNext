@@ -3,7 +3,8 @@ export interface Params {
   slug: string;
 }
 export type SearchParams = {
-  sort?: string;
+  statTableSort?: string;
+  feedbacksSort?: string;
   dateRange?: string;
   currentPage?: string;
   size?: string;

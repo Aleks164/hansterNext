@@ -3,10 +3,10 @@ import React from "react";
 import styles from "./styles.module.css";
 
 interface Props {
-  feedback: Feedback;
+  product: any;
 }
 
-function ProductCart({ feedback }: Props) {
+function ProductCart({ product }: Props) {
   return (
     <div className={styles.product_cart_container}>
       {/* <div className={styles.feedback_header_title}>

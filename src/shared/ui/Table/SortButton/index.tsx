@@ -1,18 +1,21 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 import getNextDirectionKey from "./lib/getNextDirectionKey";
+import { SearchParams } from "@/app/types";
 
 interface Props {
   sortParams?: string;
-  columnKey: string;
+  sortFiledName: string;
+  sortKey: keyof SearchParams;
   children?: React.ReactNode;
 }
 
-function SortButton({ sortParams, children, columnKey }: Props) {
+function SortButton({ sortParams, children, sortFiledName, sortKey }: Props) {
   const [direction, sortColumKey] = sortParams?.split(",") || [];
 
   const currentDirection =
-    columnKey === sortColumKey && (direction === "asc" || direction === "desc")
+    sortFiledName === sortColumKey &&
+    (direction === "asc" || direction === "desc")
       ? direction
       : "none";
 
@@ -22,7 +25,9 @@ function SortButton({ sortParams, children, columnKey }: Props) {
   return (
     <Link
       href={{
-        query: { sort: getNextDirectionKey(currentDirection, columnKey) },
+        query: {
+          [sortKey]: getNextDirectionKey(currentDirection, sortFiledName),
+        },
       }}
     >
       <button

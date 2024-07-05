@@ -1,7 +1,10 @@
 .modal_container {
+  display: flex;
+  flex-direction: row;
   position: absolute;
   margin: 0 auto;
   max-height: 80vh;
+  height: 100%;
   width: 750px;
   background-color: var(--background-color);
   overflow: hidden;
@@ -10,6 +13,7 @@
   border-radius: 15px;
   padding: 25px;
   box-shadow: -1px 1px 3px 1px;
+  scrollbar-width: thin;
 }
 
 .product_cart_container {
@@ -18,8 +22,69 @@
   box-sizing: border-box;
   border: 1px solid;
   border-radius: 15px;
+  z-index: 1;
+  position: relative;
 }
 
 .feedbacks_wrapper {
+  margin-left: 15px;
+  overflow: auto;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid;
   width: calc(100% - 150px);
+  z-index: 1;
+  position: relative;
+  scrollbar-width: thin;
+}
+
+.modal_container ::-webkit-scrollbar {
+  height: 15px;
+  width: 15px;
+}
+
+.modal_container ::-webkit-scrollbar-track {
+  background: var(--text-color);
+  border-radius: 15px;
+}
+
+.modal_container ::-webkit-scrollbar-thumb {
+  background-color: var(--track-color);
+  border: 3px solid var(--text-color);
+  border-radius: 15px;
+}
+
+.modal_container ::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+.modal_blur {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 1;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+  background-color: #0000009c;
+}
+
+.feedback_body_text {
+  text-indent: 40px;
+}
+
+.feedback_header {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px double;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.feedback_item {
+  padding: 10px;
+}
+
+.modal_sort_control_panel {
 }
